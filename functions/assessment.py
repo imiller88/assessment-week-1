@@ -25,6 +25,25 @@ go below this docstring.
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
 
+## (a)
+def is_hometown(town):
+    if town == "Mount Kisco":
+        return True
+    else:
+        return False
+
+## (b)
+def concatenate_names(first_name, last_name):
+    return first_name + " " + last_name
+
+## (c)
+def response_greeting(town, first_name, last_name):
+    full_name = concatenate_names(first_name, last_name)
+    if is_hometown(town) == True:
+        print "Hi, %s, we're from the same place!" % (full_name)
+    else:
+        print "Hi, %s, I'd like to visit %s!" % (full_name, town)
+
 ###############################################################################
 
 # PART TWO

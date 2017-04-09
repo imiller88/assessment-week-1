@@ -111,7 +111,12 @@ def every_other_item(items):
        ['you', 'are', 'good', 'at', 'code']
     """
 
-    return ['the wrong thing']
+    every_other = []
+    for i, item in enumerate(items):
+        if i % 2 == 0:
+            every_other.append(item)
+
+    return every_other
 
 
 def largest_n_items(items, n):
@@ -135,8 +140,26 @@ def largest_n_items(items, n):
         >>> largest_n_items([3, 3, 3, 2, 1], 2)
         [3, 3]
     """
+    count = 0
+    largest_nums = []
+    items.sort()
 
-    return []
+
+#i feel this is not the most efficient way to do this, but it is the best 
+#solution i came up with - hints or tips appreciated!
+    i = -1
+    for item in items: 
+        if count < n:
+            largest_nums.append(items[i])
+            i -= 1
+            count += 1
+
+    return sorted(largest_nums)
+
+    #i feel there must be a way to do list  comprehension here but my 
+    #logic skills are maybe not up to par :P
+    # n = -n
+    #largest_nums = [items for item in items if items.index(item) > n]
 
 
 #####################################################################
