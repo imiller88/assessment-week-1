@@ -27,6 +27,9 @@ go below this docstring.
 
 ## (a)
 def is_hometown(town):
+    """ Takes a town name as input and returns true if it matches the author's
+    hometown """
+
     if town == "Mount Kisco":
         return True
     else:
@@ -34,10 +37,15 @@ def is_hometown(town):
 
 ## (b)
 def concatenate_names(first_name, last_name):
+    """ Takes first and last name strings and concatenates them into a 
+    single string """
+
     return first_name + " " + last_name
 
 ## (c)
 def response_greeting(town, first_name, last_name):
+    """ Takes hometown and first and last names as arguments and returns a 
+    response greeting """
     full_name = concatenate_names(first_name, last_name)
     if is_hometown(town) == True:
         print "Hi, %s, we're from the same place!" % (full_name)
@@ -89,7 +97,13 @@ def is_berry(fruit):
 
     """
 
-    pass
+    # if fruit == "strawberry" or fruit == "raspberry" or fruit == "blackberry":
+    #     return True
+    # i wanted to try to write this more succinctly, so:
+    if fruit in ["strawberry", "raspberry", "blackberry"]:
+        return True
+    else:
+        return False
 
 
 def shipping_cost(fruit):
@@ -103,7 +117,10 @@ def shipping_cost(fruit):
 
     """
 
-    pass
+    if is_berry(fruit) == True:
+        return 0
+    elif is_berry(fruit) == False:
+        return 5
 
 
 def append_to_list(lst, num):
@@ -115,10 +132,17 @@ def append_to_list(lst, num):
 
     """
 
-    pass
+    lst.append(num)
+    return lst
 
+#        CA law requires stores to collect a 3% recycling fee, PA requires a $2
+#        highway safety fee, and in MA, there is a Commonwealth Fund fee of $1 for
+#        items with a base price under $100 and $3 for items $100 or more. Fees are
+#        added *after* the tax is calculated.
 
-def calculate_price(FILL_ME_IN):
+#        Your function should return the total cost of the item, including tax and
+#        fees.
+def calculate_price(base_price, state, state_tax = 0.05):
     """Calculate total price of an item, figuring in state taxes and fees.
 
     >>> calculate_price(40, "CA")
@@ -141,7 +165,19 @@ def calculate_price(FILL_ME_IN):
 
     """
 
-    pass
+    after_tax = base_price + base_price * state_tax
+
+    if state == "CA":
+        return after_tax + after_tax * 0.03
+    elif state == "PA":
+        return after_tax + 2
+    elif state == "MA":
+        if base_price < 100:
+            return after_tax + 1
+        else:
+            return after_tax + 3
+    else: 
+        return after_tax
 
 
 ###############################################################################
@@ -170,6 +206,24 @@ def calculate_price(FILL_ME_IN):
 
 
 ###############################################################################
+
+## (a)
+def list_appender(lst, *args):
+    """ takes a list and an indeterminate number of additional arguments and
+    appends them to the list """
+    
+    for arg in args:
+        lst.append(arg)
+    return lst
+
+## (b)
+def original_and_multiplied(word):
+    """ Takes a word and returns a tuple with the word and 3 x the word """
+
+    def word_multiplier(_word):
+        return _word * 3
+    return (word, word_multiplier(word))
+
 
 # END OF ASSESSMENT: You can ignore everything below.
 
